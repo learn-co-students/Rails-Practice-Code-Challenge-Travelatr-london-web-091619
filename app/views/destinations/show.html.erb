@@ -1,0 +1,14 @@
+<h1><%= @destination.name %></h1>
+<% unless @destination.bloggers.empty? %>
+  <h2>average blogger age: <%= @destination.average_age %></h2>
+<% end %>
+<h2>Recent Posts</h2>
+<ul>
+  <% unless @destination.bloggers.empty? %>
+    <% @destination.recent_posts(5).each do |post| %>
+      <li><%= link_to post.title, post %></li>
+    <% end %>
+  <% else %>
+    <li>No posts yet :(</li>
+  <% end %>
+</ul>
