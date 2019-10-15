@@ -1,0 +1,32 @@
+<%= form_tag("/posts") do %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2>There were some errors:</h2>
+      <ul>
+        <% @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%end%>
+
+
+<h1> Create a new post </h1>
+<%=form_for(@post) do |f|%>
+
+<%= f.label :title, 'Your Title'%>
+<%=f.text_field :title%><br><br>
+
+<%= f.label :content, 'Your Content'%>
+<%=f.text_area :content%><br><br>
+
+<%= f.label :blogger_name, 'Your Blogger'%>
+<%=collection_select(:post, :blogger_id, Blogger.all, :id, :name) %><br>
+
+
+<%= f.label :destination_name, 'Your Destination'%>
+<%=collection_select(:post, :destination_id, Destination.all, :id, :name) %><br>
+
+<%=f.submit%>
+<%end%>
