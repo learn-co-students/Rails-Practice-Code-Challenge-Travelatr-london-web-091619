@@ -7,3 +7,12 @@
   <%= f.number_field :age %><br/>
   <%= f.submit %>
 <% end %>
+
+<% unless @blogger.errors.full_messages.empty? %>
+  <h2>Form submission failed because:</h2>
+  <ul>
+    <% @blogger.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
