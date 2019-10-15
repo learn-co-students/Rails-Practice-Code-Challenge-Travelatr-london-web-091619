@@ -1,4 +1,5 @@
 <h1><%= @post.title %></h1>
 <h2>A review of <%= link_to @post.destination.name, @post.destination %> by <%= link_to @post.blogger.name, @post.blogger %></h2>
-<h2><%= @post.likes.to_s + " like".pluralize(@post.likes) %> | [I LIKE THIS]</h2>
+<h2><%= @post.likes.to_s + " like".pluralize(@post.likes) %></h2>
+<button><%= link_to "I like this!", like_post_path %></button>
 <p><%= @post.content %></p>

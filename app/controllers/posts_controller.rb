@@ -5,6 +5,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
+    @post.update(likes: 0) # likes should really default to 0 in the schema
 
     @post.valid? ? redirect_to(@post) : render(:new)
   end
@@ -22,6 +23,12 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+  end
+
+  def increment_likes
+    @post = Post.find(params[:id])
+    @post.update(likes: @post.likes += 1)
+    redirect_to @post
   end
 
   private
