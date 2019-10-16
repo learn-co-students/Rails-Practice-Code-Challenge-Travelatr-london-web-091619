@@ -1,0 +1,15 @@
+<h1><%= @destination.country %>, <%= @destination.name %> </h1>
+<h2>Featured Post by: </h2>
+<p><%= link_to @destination.featured_post.title, post_path(@destination.featured_post) %><br><br></p>
+
+
+<% @destination.last_five.each do |post| %>
+<h3>Author: <%= link_to post.blogger.name, blogger_path%></h3>
+<h3>Title: <%= post.title %><br></h3>
+<li><%= post.content %></li>
+<h3>Number of likes for post: <%= post.likes %></h3><br>
+<% end %>
+
+
+<br><br>
+<h2>Average age of unique Bloggers for this destination: <%= @destination.average_age %><br></h2>
