@@ -1,0 +1,9 @@
+<% @posts.each do |post| %>
+<ul>
+  <h1><%=link_to post.title, post_path(post) %></h1>
+  Author: <%= post.blogger.name %>
+  Destination <%= post.destination %>
+  <li><%= post.content %></li>
+</ul>
+
+<% end %>
