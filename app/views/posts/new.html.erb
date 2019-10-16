@@ -1,0 +1,24 @@
+<h1>Create new Post</h1>
+
+<% if @post.errors.any? %>
+    <p>Sorry, your post could not be saved due to the following reasons:</p>
+    <% @post.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+    <% end %>
+<% end %>
+<br>
+<%= form_for @post do |f| %>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %><br>
+    <%= f.label :content %><br>
+    <%= f.text_area :content %><br>
+    <%= f.label :blogger %><br>
+    <%= f.collection_select :blogger_id, Blogger.all, :id, :name %><br>
+    <%= f.label :destination %><br>
+    <%= f.collection_select :destination_id, Destination.all, :id, :name %><br>
+    <br>
+    <%= f.submit %>
+<% end %>
+
+
+
