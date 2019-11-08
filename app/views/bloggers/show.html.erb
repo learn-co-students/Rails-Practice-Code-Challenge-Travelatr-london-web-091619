@@ -1,0 +1,7 @@
+<h1><%= @blogger.name %></h1>
+<h2>total likes: <%= @blogger.total_likes %></h2>
+<% unless @blogger.posts.empty? %>
+  <h2>post with highest likes: <%= link_to @blogger.best_post.title, @blogger.best_post %></h2>
+<% else %>
+  <h2>no posts yet :( why not <%= link_to "write one?", new_post_path %></h2>
+<% end %>
